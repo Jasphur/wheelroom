@@ -1,0 +1,133 @@
+{
+  "author": {
+    "name": "Wheelroom"
+  },
+  "contributors": [
+    {
+      "name": "Jacco Meijer",
+      "email": "jacco@wheelroom.io",
+      "url": "https://www.jaccomeijer.nl"
+    },
+    {
+      "name": "Thijs Krooswijk",
+      "email": "thijs@wheelroom.io",
+      "url": "https://www.thijskrooswijk.com"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/wheelroom/wheelroom/issues"
+  },
+  "dependencies": {
+    "@contentful/rich-text-react-renderer": "13.4.0",
+    "@contentful/rich-text-types": "14.1.0",
+    "@emotion/core": "10.0.28",
+    "@reach/router": "1.3.3",
+    "@wheelroom/admin-core": "1.2.2",
+    "@wheelroom/admin-page-preview": "1.5.2",
+    "@wheelroom/admin-panel": "1.2.2",
+    "@wheelroom/admin-theme-switcher": "1.2.2",
+    "@wheelroom/styled-system": "4.1.2",
+    "@wheelroom/wheelroom": "4.1.2",
+    "@wheelroom/wheelroom-plugin-boilerplate": "3.1.2",
+    "@wheelroom/wheelroom-plugin-contentful": "3.3.3",
+    "@wheelroom/wheelroom-plugin-graphql": "3.1.2",
+    "camelcase": "6.0.0",
+    "deepmerge": "4.2.2",
+    "dotenv": "8.2.0",
+    "emotion-theming": "10.0.27",
+    "gatsby": "2.21.0",
+    "gatsby-plugin-emotion": "4.3.0",
+    "gatsby-plugin-manifest": "2.4.0",
+    "gatsby-plugin-offline": "3.2.0",
+    "gatsby-plugin-react-helmet": "3.3.0",
+    "gatsby-plugin-schema-snapshot": "1.0.0",
+    "gatsby-plugin-typescript": "2.4.0",
+    "gatsby-plugin-web-font-loader": "1.0.4",
+    "gatsby-source-contentful": "2.3.0",
+    "gatsby-source-filesystem": "2.3.0",
+    "gatsby-theme-wheelroom": "4.1.2",
+    "gatsby-transformer-json": "2.4.0",
+    "query-string": "6.12.1",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-helmet": "6.0.0",
+    "yargs": "15.3.1"
+  },
+  "description": "A JAMstack boilerplate for services, like Gatsby, Contentful, Netlify and much more",
+  "keywords": [
+    "contentful",
+    "gatsbyjs",
+    "netlify",
+    "react",
+    "typescript",
+    "wheelroom",
+    "cli"
+  ],
+  "devDependencies": {
+    "@svgr/cli": "5.4.0",
+    "@types/dotenv": "8.2.0",
+    "@types/fs-extra": "8.1.0",
+    "@types/node": "13.13.4",
+    "@types/react": "16.9.34",
+    "@types/react-dom": "16.9.7",
+    "@types/react-helmet": "5.0.15",
+    "@types/yargs": "15.0.4",
+    "@typescript-eslint/eslint-plugin": "2.30.0",
+    "@typescript-eslint/parser": "2.30.0",
+    "conventional-changelog-cli": "2.0.31",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.11.0",
+    "eslint-loader": "4.0.2",
+    "eslint-plugin-prettier": "3.1.3",
+    "eslint-plugin-react": "7.19.0",
+    "eslint-plugin-react-hooks": "3.0.0",
+    "fs-extra": "9.0.0",
+    "gatsby-plugin-eslint": "2.0.8",
+    "npm-run-all": "4.1.5",
+    "prettier": "2.0.5",
+    "read-pkg": "5.2.0",
+    "typescript": "3.8.3",
+    "write-pkg": "4.0.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "homepage": "https://github.com/wheelroom/wheelroom#readme",
+  "license": "MIT",
+  "main": "index.js",
+  "name": "@wheelroom/boilerplate",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wheelroom/wheelroom.git"
+  },
+  "scripts": {
+    "lint-fix": "eslint 'src/**/*.{js,ts,tsx}' --fix",
+    "build:gatsby": "gatsby build",
+    "netlify": "npm-run-all build:*",
+    "compile-config": "tsc --project src/config/tsconfig.json",
+    "develop": "gatsby develop",
+    "lint": "eslint 'src/**/*.{js,ts,tsx}'",
+    "start": "npm run develop",
+    "svgr": "npm-run-all svgr:*",
+    "svgr:figma": "svgr --filename-case kebab --ext tsx --no-dimensions --out-dir src/svg/figma src/svg/figma --config-file ./src/svg/figma/svgr.config.js",
+    "svgr:feather": "svgr --filename-case kebab --ext tsx --no-dimensions --out-dir src/wheelroom/svg/feather src/wheelroom/svg/feather --config-file ./src/wheelroom/svg/feather/svgr.config.js",
+    "type-check": "tsc --noEmit",
+    "demo-load-env": "export $(grep -v '^#' .env | xargs)",
+    "demo-version": "conventional-changelog -p angular -i CHANGELOG.md -s -r 0 && git add CHANGELOG.md",
+    "demo-postversion": "git push && git push --tags",
+    "version": "node sync-wheelroom-version.js",
+    "wr": "WHEELROOM_CONFIG=compiled-config/wheelroom-config.js wheelroom",
+    "wr:cm": "WHEELROOM_CONFIG=compiled-config/wheelroom-config.js wheelroom create-models",
+    "wr:cc": "WHEELROOM_CONFIG=compiled-config/wheelroom-config.js wheelroom create-content",
+    "wr:dc": "WHEELROOM_CONFIG=compiled-config/wheelroom-config.js wheelroom delete-content",
+    "wr:cb": "WHEELROOM_CONFIG=compiled-config/wheelroom-config.js wheelroom create-boilerplate react src/models",
+    "wr:cg": "WHEELROOM_CONFIG=compiled-config/wheelroom-config.js wheelroom create-graphql gatsbyjs src/models",
+    "wr:ls": "WHEELROOM_CONFIG=compiled-config/wheelroom-config.js wheelroom list"
+  },
+  "type": "commonjs",
+  "version": "2.7.1",
+  "wheelroom": {
+    "version": "2.7.1"
+  }
+}
